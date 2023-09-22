@@ -33,7 +33,6 @@ if(!empty($_POST)) {
 require 'templates/header.html.php';
 
 ?>
-<?= date('Y-m-d',strtotime('+3 days')) ?>
 <!-- Bibliothèque -->
 <div class="text-center mt-4">
     <h2><i class="bi bi-book mx-2"></i> BiblioApp - 

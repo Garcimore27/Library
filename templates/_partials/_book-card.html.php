@@ -16,7 +16,9 @@
         </div>
         <div class="row">
             <a href="/book.php?slug=<?= $book['slug'] ;?>" class="btn btn-sm btn-outline-light">Voir</a>
-            <a href="#" class="btn btn-sm btn-success">Réserver</a>
+            <button type="button" name="resaBook" class="btn btn-success btn-sm text-light" data-bs-toggle="modal" data-bs-target="#resaBook">
+                Réserver un Livre 
+            </button>
         </div>
 
         <!-- Modal -->

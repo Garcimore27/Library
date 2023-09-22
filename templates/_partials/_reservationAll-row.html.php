@@ -21,19 +21,20 @@ require_once 'classes/Reservation.php';
     <?php if(!$item['isClosed']) : ?>
         <?php if((int)((strtotime($item['date_end']) - time())/86400) > 3) : ?>
             <td class="text-success text-center"><h5>
+
         <?php elseif((int)((strtotime($item['date_end']) - time())/86400) < 1) : ?>
             <td class="text-danger text-center"><h5>
+
         <?php else : ?>
             <td class="text-warning text-center"><h5>
         <?php endif ?>
+    <?php else : ?>
+        <td class="text-center"><h5>
     <?php endif ?>
     <?= (DateTime::createFromFormat('Y-m-d', $item['date_end']))->format('d/m/Y'); ?>
         </h5></td>
-
-    <td class="text-center">
-        <?= !empty($item['date_return']) ? (DateTime::createFromFormat('Y-m-d', $item['date_return']))->format('d/m/Y') : "" ; ?>
-    </td>
-
+    <td class="text-center"><?= !empty($item['date_return']) ? (DateTime::createFromFormat('Y-m-d', $item['date_return']))->format('d/m/Y') : "" ?></td>
+    
     <td class="text-center"><?= $item['isClosed'] ? 1 : 0 ?></td>
 
     <td class="text-center"><?php if(!$item['isClosed']) :?>
