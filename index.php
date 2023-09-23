@@ -35,12 +35,24 @@ if(isset($_POST)) {
         ;
         Reservation::addReservation($reservation);
 
+    }elseif(isset($_POST['addClient'])){
+        $client = new Client();
+        $client->setFirstname($_POST['firstname'])
+            ->setLastname($_POST['lastname'])
+            ->setAddress($_POST['address'])
+            ->setCity($_POST['city'])
+            ->setCountry($_POST['country'])
+            ->setYear($_POST['year'])
+            ->setDeposit($_POST['deposit'])
+        ;
+        Client::addClient($client);
     }
 }
 ?>
 
 <!-- Liste de livres -->
 <h2 class="text-center mt-4">Liste des livres</h2>
+<?php include 'templates/_partials/_msg-success.php'; ?>
 <div class="biblioapp-dashboard-books rounded p-3 m-4 d-flex gap-2 bg-light shadow switch-row">
     <?php include 'templates/_partials/_books-card.html.php'; ?>
 </div>

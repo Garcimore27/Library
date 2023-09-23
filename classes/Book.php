@@ -271,15 +271,7 @@ class Book {
        //On execute la requete sur la bdd
        $query->execute();
 
-       if($query){
-            //On redirige vers la même page avec un message 
-            header('Location: books.php?success=1');
-       }else{
-           //On redirige vers la même page avec un message 
-            header('Location: books.php?success=0');
-       }
-       
-    
+       include 'templates/utils/_redirection.php';
        
     }
 

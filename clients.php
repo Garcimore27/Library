@@ -42,6 +42,7 @@ $clients = Client::getClients();
     </button>
 </div>
 <div class="rounded p-3 m-4 bg-light shadow">
+    <?php include 'templates/_partials/_msg-success.php'; ?>
     <?php include 'templates/_partials/_clients-table.html.php'; ?>
 </div>
 <?php include 'templates/modals/addClient.html.php'; ?>

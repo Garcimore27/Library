@@ -238,19 +238,11 @@ class Client {
         $query->bindValue(':year', $obj->getYear() , PDO::PARAM_INT);
         $query->bindValue(':deposit', $obj->getDeposit() , PDO::PARAM_BOOL);
 
-       //On execute la requete sur la bdd
-       $query->execute();
+        //On execute la requete sur la bdd
+        $query->execute();
 
-       if($query){
-            //On redirige vers la même page avec un message 
-            header('Location: /?success=1');
-       }else{
-           //On redirige vers la même page avec un message 
-            header('Location: /?success=0');
-       }
-       
-    
-       
+        include 'templates/utils/_redirection.php';
+         
     }
 }
 

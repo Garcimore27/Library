@@ -191,8 +191,7 @@ class Reservation {
             //On execute la requete sur la bdd
             $query->execute();
 
-            //redirection vers reservations.php
-            header('Location: /reservations.php');
+            include 'templates/utils/_redirection.php';
         }
 
     //Méthode statique de cloture de réservation (isClosed = true)
@@ -212,8 +211,7 @@ class Reservation {
             //On execute la requete sur la bdd
             $query->execute();
 
-            //redirection vers reservations.php
-            //header('Location: /reservations.php');
+            include 'templates/utils/_redirection.php';
         }
 
     //Méthode statique d'archivage de réservation
@@ -235,12 +233,11 @@ class Reservation {
             //On execute la requete sur la bdd
             $query->execute();
 
-            //redirection vers reservations.php
-            header('Location: /reservations.php');
+            include 'templates/utils/_redirection.php';
         }
 
     //Méthode statique pour lister les réservations à archiver (> 6 mois)
-    public static function mustBeArchivedReservations(): void
+    public static function mustBeArchivedReservations(): array
         {
             //variable contenant la date d(il y a 6 mois)
             $dateLimit = new DateTime("-6 months");
@@ -264,8 +261,12 @@ class Reservation {
             //On execute la requete sur la bdd
             $query->execute();
 
-            //redirection vers reservations.php
-            header('Location: /reservations.php');
+            $reservations = $query->fetchAll(
+                PDO::FETCH_ASSOC
+            );
+
+            //on effectue un return pour avoir les données des livres
+            return $reservations;
         }
 
     //Méthode statique pour obtenir une liste de toutes les réservations
@@ -376,13 +377,7 @@ class Reservation {
             //On execute la requete sur la bdd
             $query->execute();
 
-            if($query){
-                    //On redirige vers la même page avec un message 
-                    header('Location: reservations.php?success=1');
-            }else{
-                //On redirige vers la même page avec un message 
-                    header('Location: reservations.php?success=0');
-            }
+            include 'templates/utils/_redirection.php';
        
         }
 
@@ -410,13 +405,7 @@ class Reservation {
             //On execute la requete sur la bdd
             $query->execute();
 
-            if($query){
-                    //redirection
-                    header('Location: reservation.php?id=' . $obj->getId());
-            }else{
-                    //redirection
-                    header('Location: reservations.php?success=0');
-            }
+            include 'templates/utils/_redirection.php';
         
         }
 
