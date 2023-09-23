@@ -86,10 +86,10 @@ if(isset($_POST)) {
         <p>
             Un nouvel adhérent ? Vous pouvez l'ajouter à partir de cette page.
         </p>
-        <a href="clients.php" class="btn btn-outline-primary text-center">
+        <button type="button" class="btn btn-outline-primary text-center" data-bs-toggle="modal" data-bs-target="#addClient">
             <i class="bi bi-plus-circle"></i>
-            Ajouter un client
-        </a>
+            Ajouter un Client
+        </button>
     </div>
 </div>
 
@@ -97,5 +97,6 @@ if(isset($_POST)) {
 
 include 'templates/modals/addBook.html.php';
 include 'templates/modals/addReservation.html.php';
+include 'templates/modals/addClient.html.php';
 
 require 'templates/footer.html.php';

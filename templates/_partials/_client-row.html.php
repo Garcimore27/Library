@@ -17,14 +17,19 @@ require_once 'classes/Client.php';
             echo $date->format("Y") - $client['year'];
         ?>
     </td>
-    <td class="text-center"><?php if($client['deposit'] === 1) : ?>
-            <p class="badge bg-success text-light rounded-pill">Déposée</p>
+    <td class="text-center">
+        <?php if($client['deposit'] === 1) : ?>
+            <h4><p class="badge bg-success text-light rounded-pill">
+                    Déposée
+                </p></h4>
         <?php else : ?>
-            <p class="badge bg-warning rounded-pill">Non Déposée</p>
+            <h4><p class="badge bg-warning rounded-pill">
+                Non Déposée
+            </p></h4>
         <?php endif ?>
     </td>
     <td class="text-center"><?php if($client['deposit'] <> 1) : ?>
-            <a href="/clients.php?id=<?= $client['id'] ;?>" class="btn btn-sm btn-danger">PAYER</a>
+        <h4><a href="/clients.php?id=<?= $client['id'] ;?>" class="btn btn-sm btn-danger">PAYER</a></h4>
         <?php endif ?>
     </td>
 </tr>
