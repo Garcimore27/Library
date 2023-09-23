@@ -2,6 +2,7 @@
 
 require_once 'classes/Book.php';
 require_once 'classes/Client.php';
+require_once 'classes/Reservation.php';
 
 
 $clients = Client::getClients();
@@ -33,7 +34,7 @@ if(isset($_POST)) {
             ->setIsClosed($_POST['isClosed'])
             ->setIsArchived($_POST['isArchived'])
         ;
-
+        Reservation::addReservation($reservation);
 
     }
 }

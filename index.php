@@ -1,8 +1,42 @@
 <?php
 
+require_once 'classes/Book.php';
+require_once 'classes/Client.php';
+require_once 'classes/Reservation.php';
+
 require 'templates/header.html.php';
 
+$clients = Client::getClients();
+$books = Book::getAvailableBooks();
+//Traitement du formulaire
+if(isset($_POST)) {
+    if(isset($_POST['addBook'])){
+    $book = new Book();
+    $book->setTitle($_POST['title'])
+        ->setAuthor($_POST['author'])
+        ->setCategory($_POST['category'])
+        ->setYear($_POST['year'])
+        ->setIsbn($_POST['isbn'])
+        ->setSlug($_POST['title'])
+    ;
+    Book::addBook($book);
+    //var_dump($book);
+    }elseif(isset($_POST['resaBook'])){
+        $reservation = new Reservation();
+        $reservation
+            ->setId($_POST['id'])
+            ->setClientId($_POST['clientId'])
+            ->setBookId($_POST['bookId'])
+            ->setDate_start($_POST['startDate'])
+            ->setDate_End($_POST['endDate'])
+            ->setDate_Return($_POST['returnDate'])
+            ->setIsClosed($_POST['isClosed'])
+            ->setIsArchived($_POST['isArchived'])
+        ;
+        Reservation::addReservation($reservation);
 
+    }
+}
 ?>
 
 <!-- Liste de livres -->
@@ -34,19 +68,19 @@ require 'templates/header.html.php';
         <p>
             Vous pouvez ajouter un livre à partir de cette page en quelques clics.
         </p>
-        <a href="books.php" class="btn btn-outline-primary text-center">
+        <button type="button" name="addBook" class="btn btn-outline-primary text-center" data-bs-toggle="modal" data-bs-target="#addBook">
             <i class="bi bi-plus-circle"></i>
-            Ajouter un livre
-        </a>
+            Ajouter un Livre 
+        </button>
     </div>
     <div class="col-md-3 col-sm-12 border rounded p-3 m-4">
         <p>
             Vous pouvez ajouter une réservation en cliquant sur le bouton.
         </p>
-        <a href="reservations.php" class="btn btn-outline-primary text-center">
+        <button type="button" class="btn btn-outline-primary text-center" data-bs-toggle="modal" data-bs-target="#addReservation">
             <i class="bi bi-plus-circle"></i>
-            Ajouter une réservation
-        </a>
+            Ajouter une Réservation
+        </button>
     </div>
     <div class="col-md-3 col-sm-12 border rounded p-3 m-4">
         <p>
@@ -59,6 +93,9 @@ require 'templates/header.html.php';
     </div>
 </div>
 
-<?php
+<?php 
+
+include 'templates/modals/addBook.html.php';
+include 'templates/modals/addReservation.html.php';
 
 require 'templates/footer.html.php';
