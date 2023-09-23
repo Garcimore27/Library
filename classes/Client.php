@@ -215,15 +215,42 @@ class Client {
 
         //On execute la requete sur la bdd
         $query->execute();
+ 
+    }
 
-        // if($query){
-        //         //redirection
-        //         header('Location: client.php?id=' . $id);
-        // }else{
-        //         //redirection
-        //         header('Location: clients.php?success=0');
-        // }
+    public static function addClient($obj): void
+    {
+
+       //requête SQL pour ajouter un client
+       $sql = "INSERT INTO clients(firstname, lastname, address, city, country, year, deposit) VALUES(:firstname, :lastname, :address, :city, :country, :year, :deposit);";
+       //connexion bdd
+       $db = Connect::connect();
+
+       //On effectue un le query sur la bdd
+       $query = $db->prepare($sql);
+
+       //On lie les valeurs aux paramètres
+        $query->bindValue(':firstname', $obj->getFirstname() , PDO::PARAM_STR);
+        $query->bindValue(':lastname', $obj->getLastname(), PDO::PARAM_STR);
+        $query->bindValue(':address', $obj->getAddress(), PDO::PARAM_STR);
+        $query->bindValue(':city', $obj->getCity() , PDO::PARAM_STR);
+        $query->bindValue(':country', $obj->getCountry() , PDO::PARAM_STR);
+        $query->bindValue(':year', $obj->getYear() , PDO::PARAM_INT);
+        $query->bindValue(':deposit', $obj->getDeposit() , PDO::PARAM_BOOL);
+
+       //On execute la requete sur la bdd
+       $query->execute();
+
+       if($query){
+            //On redirige vers la même page avec un message 
+            header('Location: /?success=1');
+       }else{
+           //On redirige vers la même page avec un message 
+            header('Location: /?success=0');
+       }
+       
     
+       
     }
 }
 
