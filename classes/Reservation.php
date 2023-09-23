@@ -153,7 +153,7 @@ class Reservation {
             $sql = "SELECT cbr.*, c.firstname, c.lastname, b.title, b.author  FROM clients_books_reservations AS cbr
                     LEFT JOIN clients AS c ON cbr.client_id = c.id
                     LEFT JOIN book AS b ON cbr.book_id = b.id
-                    WHERE cbr.isClosed = 0 AND cbr.isArchived = 0
+                    WHERE (cbr.isClosed = 0 OR ISNULL(cbr.isClosed)) AND (cbr.isArchived = 0 OR ISNULL(cbr.isArchived))
                     ORDER BY cbr.date_start
                     LIMIT 20 ;";
 
