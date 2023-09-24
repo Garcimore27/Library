@@ -60,7 +60,7 @@ if (isset($_POST['id'])){
                 <?= $reservation['author'] ?>
             </h3>
             <div class="blog-post">
-                <h2 class="blog-post-title"><?= $reservation['title'] ?></h2>
+                <h2 class="blog-post-title"><?= $reservation['book_id'] ?> - <?= $reservation['title'] ?></h2>
                 <p class="blog-post-meta">Du <?= $reservation['date_start'] ?> au  <?= $reservation['date_end'] ?></p>
                 <p class="blog-post-meta">Par  <?= $reservation['firstname'] . " " . $reservation['lastname'] ?></p>
             </div>
@@ -95,10 +95,10 @@ if (isset($_POST['id'])){
                 <label for="bookReservation">Livre</label>
                 <select value="" class="custom-select form-control" name="bookId" id="bookReservation" placeholder="Sélectionnez un livre" required>
                     <?php foreach($books as $book) : ?>
-                        <?php if($book['id'] == $reservation['bookId']) : ?>
-                            <option selected value = "<?= $book['id'] ?>"> <?= $book['title'] ?></option>
+                        <?php if($book['id'] == $reservation['book_id']) : ?>
+                            <option selected value= "<?= $reservation['book_id'] ?>"> <?= $book['title'] ?></option>
                         <?php else : ?>
-                            <option value = "<?= $book['id'] ?>"> <?= $book['title'] ?></option>
+                            <option value= "<?= $book['id'] ?>"> <?= $book['title'] ?></option>
                         <?php endif ?>
                     <?php endforeach ?>
                 </select>
