@@ -11,8 +11,9 @@ require 'templates/header.html.php';
 /**
 * Page d'une seule réservation
 */
-
-$reservation = Reservation::getOneReservation($_GET['id']);
+if (isset($_GET['id'])){
+    $reservation = Reservation::getOneReservation($_GET['id']);
+}
 //var_dump($reservation);
 
 $books = Book::getBooks();
@@ -92,9 +93,13 @@ if (isset($_POST['id'])){
             <input name="id" type="text" value="<?= $reservation['id']; ?>" hidden>
             <div class="form-group">
                 <label for="bookReservation">Livre</label>
-                <select value="<?= $reservation['title']; ?>" class="custom-select form-control" name="bookId" id="bookReservation" placeholder="Sélectionnez un livre" required>
+                <select value="" class="custom-select form-control" name="bookId" id="bookReservation" placeholder="Sélectionnez un livre" required>
                     <?php foreach($books as $book) : ?>
-                        <option value = "<?= $book['id'] ?>"> <?= $book['title'] ?></option>
+                        <?php if($book['id'] == $reservation['bookId']) : ?>
+                            <option selected value = "<?= $book['id'] ?>"> <?= $book['title'] ?></option>
+                        <?php else : ?>
+                            <option value = "<?= $book['id'] ?>"> <?= $book['title'] ?></option>
+                        <?php endif ?>
                     <?php endforeach ?>
                 </select>
             </div>

@@ -16,9 +16,10 @@
         </div>
         <div class="row">
             <a href="/book.php?slug=<?= $book['slug'] ;?>" class="btn btn-sm btn-outline-light">Voir</a>
-            <button type="button" name="resaBook" class="btn btn-success btn-sm text-light" data-bs-toggle="modal" data-bs-target="#resaBook">
+            <a href="/reserveOneBook.php?slug=<?= $book['slug'] ;?>" class="btn btn-success btn-sm text-light">Réserver un Livre</a>
+            <!-- <button type="button" name="resaBook" class="btn btn-success btn-sm text-light" data-bs-toggle="modal" data-bs-target="#resaBook">
                 Réserver un Livre 
-            </button>
+            </button> -->
         </div>
  </div>
  </div>
