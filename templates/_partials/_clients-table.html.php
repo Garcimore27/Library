@@ -4,15 +4,16 @@
  */
  require_once 'classes/Client.php';
  ?>
-<table class="table table-striped">
+
+<table class="table table-striped" id="sortTable">
     <thead>
         <tr>
-            <th class="text-center" scope="col">#</th>
-            <th class="text-center" scope="col">Prénom</th>
-            <th class="text-center" scope="col">Nom</th>
-            <th class="text-center" scope="col">Age</th>
-            <th class="text-center" scope="col">Caution</th>
-            <th class="text-center" scope="col">Payer</th>
+            <th class="text-center th-inner sortable both asc" scope="col">#</th>
+            <th class="text-center th-inner sortable both asc" scope="col">Prénom</th>
+            <th class="text-center th-inner sortable both asc" scope="col">Nom</th>
+            <th class="text-center th-inner sortable both asc" scope="col">Age</th>
+            <th class="text-center th-inner sortable both asc" scope="col">Caution</th>
+            <th class="text-center th-inner sortable both asc" scope="col">Payer</th>
         </tr>
     </thead>
     <tbody>

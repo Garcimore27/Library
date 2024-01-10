@@ -1,13 +1,11 @@
 <?php
+    require 'templates/header.html.php';
+?>
 
-// require "Classes/Book.php";
+<?php
 
-// foreach (Book::getBooks() as $book) {
-//     echo $book['title']."<br>";
-// }
+require 'templates/footer.html.php';
 
-require 'services/Slug.php';
-echo Slug::toSlug('Bonjour Martin !');
 
 
 
